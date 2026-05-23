@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "prisma/**/*.ts",
+    "*.config.*",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "commitlint.config.ts"
+  ]
+}

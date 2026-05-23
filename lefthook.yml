@@ -1,0 +1,36 @@
+# Lefthook — parallel pre-commit guardrails (~3s total).
+# If any job fails, the commit is rejected. Read errors, fix all in one pass, retry.
+# See skills/self-correcting-loop/SKILL.md.
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: prettier
+      run: npx lint-staged
+
+    - name: lint-unused
+      run: npx knip --no-progress
+
+    - name: lint
+      glob: '*.{ts,tsx}'
+      run: npx eslint {staged_files}
+
+    - name: typecheck
+      run: npm run typecheck
+
+    - name: test-related
+      glob: 'src/**/*.{ts,tsx}'
+      run: npx vitest related {staged_files} --run --passWithNoTests
+
+    - name: secrets
+      run: |
+        if command -v gitleaks >/dev/null 2>&1; then
+          gitleaks protect --staged --no-banner
+        else
+          npx -y gitleaks@latest protect --staged --no-banner
+        fi
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: npx commitlint --edit {1}

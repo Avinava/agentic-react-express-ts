@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/client/main.tsx",
+    "src/server/index.ts",
+    "src/server/routers/index.ts",
+    "prisma/seed.ts",
+    "scripts/setup.ts"
+  ],
+  "project": ["src/**/*.{ts,tsx}", "scripts/**/*.ts", "prisma/**/*.ts"],
+  "ignoreDependencies": ["@types/react", "@types/react-dom", "@vitejs/plugin-react"]
+}
