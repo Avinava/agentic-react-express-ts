@@ -66,6 +66,21 @@ Open <http://localhost:3000>.
 
 Point your coding agent at the project. It will pick up [`AGENTS.md`](AGENTS.md) (the canonical guide), or the agent-specific pointer files: [`CLAUDE.md`](CLAUDE.md), [`GEMINI.md`](GEMINI.md), or [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
 
+> [!TIP]
+> **Paste this exact line to your AI agent** (Claude Code, Codex, Cursor, Copilot, or Gemini CLI) the first time you open the repo. It runs the full onboarding interview, builds a plan, and implements step-by-step — no clone required for the agent to read context.
+>
+> ```
+> Fetch and follow these in order:
+>   1. https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/AGENTS.md
+>   2. https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/skills/onboard-an-agent/SKILL.md
+> Then fetch the other skills as needed:
+>   - https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/skills/add-resource/SKILL.md
+>   - https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/skills/remove-demo-code/SKILL.md
+>   - https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/skills/self-correcting-loop/SKILL.md
+>   - https://raw.githubusercontent.com/Avinava/agentic-react-express-ts/main/skills/deploy-checklist/SKILL.md
+> Interview me about what I want to build on top of this template. Once we agree on scope, produce a step-by-step plan (which skills you will follow, what resources to add, what to strip from the CRM demo). Confirm the plan with me before any destructive change, then implement it: prefer add-resource for new resources and remove-demo-code when clearing the CRM. After each milestone, run `npm run typecheck && npm run lint && npm run lint:unused && npm run test:run` and only commit when all four pass — never use --no-verify.
+> ```
+
 When the agent hits a task with a matching skill, it should read that skill first:
 
 | Task                                  | Read                                                                  |
